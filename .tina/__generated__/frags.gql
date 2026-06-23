@@ -1,0 +1,10 @@
+fragment ArticleParts on Article {
+  __typename
+  title
+  pubDate
+  description
+  neighborhood
+  category
+  heroImage
+  body
+}
