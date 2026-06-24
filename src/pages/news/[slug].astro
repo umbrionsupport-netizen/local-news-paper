@@ -1,0 +1,47 @@
+---
+// src/pages/news/[slug].astro
+import { getEntry, render } from 'astro:content';
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect('/404');
+}
+
+// Fetch the article entry using the modern API
+const article = await getEntry('articles', slug);
+
+if (!article) {
+  return Astro.redirect('/404');
+}
+
+// Render the body content using the updated global renderer
+const { Content } = await render(article);
+
+const formattedDate = new Date(article.data.pubDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{article.data.title}</title>
+  <style>
+    body { font-family: sans-serif; max-width: 740px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; }
+    .meta { color: #666; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <nav><a href="/">← Back Home</a></nav>
+  <main>
+    <h1>{article.data.title}</h1>
+    <p class="meta">{article.data.neighborhood} • {formattedDate}</p>
+    <Content />
+  </main>
+</body>
+</html>
