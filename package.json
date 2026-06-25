@@ -6,17 +6,15 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-   "dev": "npx --node-options='--max-old-space-size=4096' tinacms dev -c \"astro dev\"",
-  "build": "./node_modules/.bin/tinacms build --local && astro build",
-  "preview": "astro preview"
+    "dev": "npx --node-options='--max-old-space-size=4096' tinacms dev -c \"astro dev\"",
+    "build": "tinacms build --local && astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^7.0.0"
-  },
-  "devDependencies": {
     "@astrojs/node": "^11.0.0",
-    "@tinacms/astro": "^0.5.0",
-    "@tinacms/cli": "^2.5.1",
-    "tinacms": "^3.9.3"
-  }
+    "astro": "^7.0.0",
+    "tinacms": "^1.6.0",
+    "@tinacms/astro": "^0.5.0"
+  },
+  "devDependencies": {}
 }
