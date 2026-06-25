@@ -7,7 +7,7 @@
   },
   "scripts": {
    "dev": "npx --node-options='--max-old-space-size=4096' tinacms dev -c \"astro dev\"",
-  "build": "npx tinacms build && astro build",
+  "build": "npx tinacms build --local && astro build",
   "preview": "astro preview"
   },
   "dependencies": {
