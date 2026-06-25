@@ -16,5 +16,10 @@
     "tinacms": "^1.6.0",
     "@tinacms/astro": "^0.5.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "overrides": {
+    "@tinacms/astro": {
+      "astro": "^7.0.0"
+    }
+  }
 }
