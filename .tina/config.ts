@@ -1,19 +1,18 @@
 import { defineConfig } from "tinacms";
 
-// Detect if we are building inside Netlify's production environment
-const isProduction = process.env.NODE_ENV === "production";
-
 export default defineConfig({
   branch: "main",
   
-  // Provide dummy strings for production so the CLI passes validation checks cleanly
-  clientId: isProduction ? "dummy-client-id" : "local-development-id", 
-  token: isProduction ? "dummy-token-string" : "local-development-token",
+  // Hardcode these dummy values. The --local flag in package.json will keep it local,
+  // but these strings ensure the validation code doesn't try to look for real keys.
+  clientId: "00000000-0000-0000-0000-000000000000", 
+  token: "0000000000000000000000000000000000000000",
   
   build: {
     outputFolder: "admin",
     publicFolder: "public",
   },
+  // ... rest of your config stays the same
   media: {
     tina: {
       mediaRoot: "uploads",
